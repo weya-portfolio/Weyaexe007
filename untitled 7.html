@@ -1,0 +1,1095 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEYA.exe — Independent Artist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #090708;
+  --panel: #120c0e;
+  --burgundy: #671827;
+  --red: #9b3048;
+  --cream: #f0e6df;
+  --muted: #a49a96;
+  --line: rgba(240,230,223,.13);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  width: 100%;
+  padding: 25px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(9,7,8,.88);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: .15em;
+}
+
+.logo span { color: var(--red); }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+nav a { color: var(--muted); }
+nav a:hover { color: white; }
+nav .nav-cta { color: var(--red); }
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 150px 9% 100px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 40%,#49121f 0%,transparent 45%),
+    var(--bg);
+}
+
+.hero:after {
+  content: "WEYA";
+  position: absolute;
+  right: -3%;
+  bottom: -12%;
+  font-size: 32vw;
+  font-weight: 700;
+  letter-spacing: -.1em;
+  color: rgba(255,255,255,.018);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+}
+
+.eyebrow {
+  color: var(--red);
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(75px,12vw,155px);
+  font-weight: 500;
+  line-height: .95;
+  letter-spacing: -.06em;
+  margin: 35px 0;
+}
+
+.hero h1 em,
+.contact h2 em {
+  color: #a13b50;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+  max-width: 500px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 23px;
+  border: 1px solid var(--line);
+  font-size: 10px;
+  letter-spacing: .12em;
+  transition: .3s;
+  cursor: pointer;
+  background: transparent;
+  color: var(--cream);
+}
+
+.btn.primary {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+.btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  transform: translateY(-3px);
+}
+
+/* MARQUEE */
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 23px 0;
+  background: var(--burgundy);
+  color: white;
+  font-size: 11px;
+  letter-spacing: .2em;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: move 25s linear infinite;
+}
+
+@keyframes move {
+  to { transform: translateX(-100%); }
+}
+
+/* SECTIONS */
+
+section.content { padding: 120px 7%; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.section-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(45px,7vw,85px);
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 15px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  max-width: 350px;
+}
+
+/* FILTER */
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.filter {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 11px 17px;
+  cursor: pointer;
+  font-size: 9px;
+  letter-spacing: .1em;
+}
+
+.filter.active,
+.filter:hover {
+  background: var(--burgundy);
+  color: white;
+  border-color: var(--burgundy);
+}
+
+/* GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+}
+
+.art-card {
+  background: var(--panel);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: .4s;
+}
+
+.art-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--red);
+}
+
+.art-image {
+  aspect-ratio: 4/5;
+  background: #211016;
+  overflow: hidden;
+  position: relative;
+}
+
+.art-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .7s ease;
+  filter: saturate(.82) contrast(1.04);
+}
+
+.art-card:hover .art-image img {
+  transform: scale(1.06);
+  filter: saturate(1.05);
+}
+
+.art-image:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 55%,
+    rgba(9,7,8,.35)
+  );
+  pointer-events: none;
+}
+
+.art-info { padding: 22px; }
+
+.art-info small {
+  color: var(--red);
+  font-size: 9px;
+  letter-spacing: .15em;
+}
+
+.art-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.art-info p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ABOUT */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.about-visual {
+  min-height: 600px;
+  background:
+    linear-gradient(135deg,#67182755,#09070855),
+    url('https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=85')
+    center/cover;
+}
+
+.about-text {
+  padding: 100px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(45px,5vw,75px);
+  font-weight: 500;
+  line-height: 1;
+  margin: 25px 0;
+}
+
+.about-text p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 18px;
+}
+
+.signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 30px;
+  color: var(--red);
+  margin-top: 20px;
+}
+
+/* SERVICES */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  padding: 40px;
+  border-bottom: 1px solid var(--line);
+}
+
+.service:nth-child(odd) {
+  border-right: 1px solid var(--line);
+}
+
+.service .number {
+  color: var(--red);
+  font-size: 11px;
+}
+
+.service h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 25px 0 15px;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  max-width: 400px;
+}
+
+.price {
+  color: var(--cream);
+  font-size: 12px;
+  margin-top: 22px;
+}
+
+/* PROCESS */
+
+.process {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.step {
+  padding: 25px 0;
+  border-top: 1px solid var(--red);
+}
+
+.step small {
+  color: var(--red);
+  font-size: 10px;
+}
+
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  margin: 20px 0 12px;
+  font-weight: 500;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* CONTACT */
+
+.contact {
+  background: linear-gradient(130deg,#100b0d,#40111e);
+}
+
+.contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(60px,10vw,125px);
+  line-height: .95;
+  font-weight: 500;
+  margin: 25px 0;
+}
+
+.contact > p {
+  color: var(--muted);
+  max-width: 500px;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+/* FORM */
+
+form {
+  max-width: 750px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field.full { grid-column: 1/-1; }
+
+.field label {
+  font-size: 9px;
+  letter-spacing: .15em;
+  color: var(--red);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 15px;
+  background: #090708;
+  border: 1px solid var(--line);
+  color: var(--cream);
+  outline: none;
+  border-radius: 0;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--red);
+}
+
+.field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+form button { grid-column: 1/-1; }
+
+/* SOCIAL CONTACT */
+
+.social-contact {
+  padding: 80px 7%;
+  background: #100b0d;
+  border-top: 1px solid var(--line);
+}
+
+.social-contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px,6vw,68px);
+  font-weight: 500;
+  margin: 20px 0 30px;
+}
+
+.social-contact h2 em { color: var(--red); }
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 35px 7%;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .1em;
+}
+
+/* ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: .8s;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* MOBILE */
+
+@media(max-width:800px) {
+  header { padding: 20px 5%; }
+
+  nav {
+    gap: 13px;
+    font-size: 8px;
+  }
+
+  section.content { padding: 85px 6%; }
+
+  .gallery {
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+  }
+
+  .about { grid-template-columns: 1fr; }
+
+  .about-visual { min-height: 400px; }
+
+  .about-text { padding: 70px 8%; }
+
+  .process { grid-template-columns: repeat(2,1fr); }
+
+  .section-head { display: block; }
+
+  .section-head p { margin-top: 25px; }
+}
+
+@media(max-width:520px) {
+  header { flex-wrap: wrap; }
+
+  nav { gap: 10px; }
+
+  .logo { font-size: 15px; }
+
+  .hero { padding: 130px 7% 80px; }
+
+  .hero h1 { font-size: 76px; }
+
+  .gallery { grid-template-columns: 1fr; }
+
+  .services { grid-template-columns: 1fr; }
+
+  .service:nth-child(odd) { border-right: 0; }
+
+  .service { padding: 30px 5px; }
+
+  .process { grid-template-columns: 1fr 1fr; }
+
+  form { grid-template-columns: 1fr; }
+
+  .field.full { grid-column: auto; }
+
+  footer { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+  <a href="#" class="logo">WEYA<span>.exe</span></a>
+
+  <nav>
+    <a href="#work">WORKS</a>
+    <a href="#services">SERVICES</a>
+    <a href="#about">ABOUT</a>
+    <a href="#commission" class="nav-cta">COMMISSION ↗</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-content reveal">
+    <div class="eyebrow">
+      INDEPENDENT ARTIST · THAILAND
+    </div>
+
+    <h1>
+      Art with<br>
+      <em>a soul.</em>
+    </h1>
+
+    <p>
+      Creating meaningful artwork, unique characters and custom designs.
+      Every piece begins with an idea and becomes something made just for you.
+    </p>
+
+    <div class="buttons">
+      <a class="btn primary" href="#work">EXPLORE MY WORK ↗</a>
+      <a class="btn" href="#commission">HIRE ME</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+  <span>
+    ART · DESIGN · CREATIVITY ✳
+    ILLUSTRATION ✳
+    TATTOO DESIGN ✳
+    CHARACTER ART ✳
+    TAROT ✳
+  </span>
+</div>
+
+<!-- PORTFOLIO -->
+
+<section class="content" id="work">
+  <div class="section-head reveal">
+    <div>
+      <div class="eyebrow">SELECTED PROJECTS</div>
+      <h2>My Portfolio.</h2>
+    </div>
+
+    <p>
+      A collection of artwork, custom illustrations and creative projects.
+      Each piece tells a story.
+    </p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">ALL WORKS</button>
+    <button class="filter" data-filter="illustration">ILLUSTRATION</button>
+    <button class="filter" data-filter="tattoo">TATTOO</button>
+    <button class="filter" data-filter="character">CHARACTER</button>
+    <button class="filter" data-filter="tarot">TAROT</button>
+  </div>
+
+  <div class="gallery">
+
+    <article class="art-card reveal" data-category="illustration">
+      <div class="art-image">
+        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=85"
+             alt="Illustration artwork" loading="lazy">
+      </div>
+      <div class="art-info">
+        <small>ILLUSTRATION / 001</small>
+        <h3>Custom Illustration</h3>
+        <p>Original artwork & visual storytelling.</p>
+      </div>
+    </article>
+
+    <article class="art-card reveal" data-category="tattoo">
+      <div class="art-image">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=900&q=85"
+             alt="Art studio and drawing tools" loading="lazy">
+      </div>
+      <div class="art-info">
+        <small>TATTOO / 002</small>
+        <h3>Dark pattern Design</h3>
+        <p>Custom tattoo concepts and linework.</p>
+      </div>
+    </article>
+
+    <article class="art-card reveal" data-category="character">
+      <div class="art-image">
+        <img src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?auto=format&fit=crop&w=900&q=85"
+             alt="Character inspired artwork" loading="lazy">
+      </div>
+      <div class="art-info">
+        <small>CHARACTER / 003</small>
+        <h3>Character Creation</h3>
+        <p>Original characters and visual concepts.</p>
+      </div>
+    </article>
+
+    <article class="art-card reveal" data-category="tarot">
+      <div class="art-image">
+        <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=900&q=85"
+             alt="Tarot inspired artwork" loading="lazy">
+      </div>
+      <div class="art-info">
+        <small>TAROT / 004</small>
+        <h3>Card Illustration</h3>
+        <p>Symbolism and original card artwork.</p>
+      </div>
+    </article>
+
+    <article class="art-card reveal" data-category="illustration">
+      <div class="art-image">
+        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=900&q=85"
+             alt="Contemporary art commission" loading="lazy">
+      </div>
+      <div class="art-info">
+        <small>ILLUSTRATION / 005</small>
+        <h3>Creative Commission</h3>
+        <p>Personalized artwork for clients.</p>
+      </div>
+    </article>
+
+    <article class="art-card reveal" data-category="character">
+      <div class="art-image">
+        <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=900&q=85"
+             alt="Creative visual design" loading="lazy">
+      </div>
+      <div class="art-info">
+        <small>DESIGN / 006</small>
+        <h3>Visual Experiment</h3>
+        <p>Exploring form, texture and composition.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+  <div class="about-visual"></div>
+
+  <div class="about-text reveal">
+    <div class="eyebrow">THE ARTIST BEHIND THE WORK</div>
+
+    <h2>
+      Art is how<br>
+      I speak.
+    </h2>
+
+    <p>
+      I'm WEYA.exe, an independent artist and freelance creative
+      specializing in illustration, tattoo design and visual storytelling.
+    </p>
+
+    <p>
+      My approach combines detail, emotion and individual expression
+      to create artwork that feels personal and meaningful.
+    </p>
+
+    <p>
+      From a single custom illustration to a complete creative project,
+      I welcome ideas of all kinds.
+    </p>
+
+    <div class="signature">WEYA.exe</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="content" id="services">
+  <div class="section-head reveal">
+    <div>
+      <div class="eyebrow">WHAT I DO</div>
+      <h2>Services.</h2>
+    </div>
+
+    <p>
+      Custom artwork and creative solutions tailored to your project.
+    </p>
+  </div>
+
+  <div class="services">
+
+    <div class="service reveal">
+      <span class="number">01 / ILLUSTRATION</span>
+      <h3>Custom Artwork</h3>
+      <p>
+        Personalized illustrations, pet portraits, commercial artwork
+        and visual concepts.
+      </p>
+      <div class="price">Starting at ฿1,000</div>
+    </div>
+
+    <div class="service reveal">
+      <span class="number">02 / TATTOO</span>
+      <h3>Tattoo Design</h3>
+      <p>
+        Custom tattoo designs, fine line, ornamental and personal concepts.
+      </p>
+      <div class="price">Starting at ฿1,000</div>
+    </div>
+
+    <div class="service reveal">
+      <span class="number">03 / CHARACTER</span>
+      <h3>Character Design</h3>
+      <p>
+        Original characters, game assets, concept art and layered illustrations.
+      </p>
+      <div class="price">Quote based on project</div>
+    </div>
+
+    <div class="service reveal">
+      <span class="number">04 / CARD ART</span>
+      <h3>Tarot & Card Art</h3>
+      <p>
+        Custom card illustrations, tarot projects, themed collections
+        and commercial artwork.
+      </p>
+      <div class="price">Quote based on project</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+
+<section class="content">
+  <div class="section-head reveal">
+    <div>
+      <div class="eyebrow">HOW IT WORKS</div>
+      <h2>The Process.</h2>
+    </div>
+  </div>
+
+  <div class="process">
+
+    <div class="step reveal">
+      <small>STEP 01</small>
+      <h3>Brief</h3>
+      <p>Send your ideas, references, budget and deadline.</p>
+    </div>
+
+    <div class="step reveal">
+      <small>STEP 02</small>
+      <h3>Proposal</h3>
+      <p>Confirm the scope, pricing and timeline.</p>
+    </div>
+
+    <div class="step reveal">
+      <small>STEP 03</small>
+      <h3>Creation</h3>
+      <p>Sketch, review and refine the artwork.</p>
+    </div>
+
+    <div class="step reveal">
+      <small>STEP 04</small>
+      <h3>Delivery</h3>
+      <p>Receive the final files in the agreed format.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMMISSION -->
+
+<section class="content contact" id="commission">
+  <div class="eyebrow">HAVE A PROJECT IN MIND?</div>
+
+  <h2>
+    Let's make<br>
+    <em>it happen.</em>
+  </h2>
+
+  <p>
+    Tell me about your idea. Share your references, budget and timeline,
+    and I'll get back to you with a proposal.
+  </p>
+
+  <form id="commissionForm">
+
+    <div class="field">
+      <label>YOUR NAME</label>
+      <input type="text" name="name"
+             placeholder="Your name" required>
+    </div>
+
+    <div class="field">
+      <label>EMAIL / CONTACT</label>
+      <input type="text" name="contact"
+             placeholder="Email or social media" required>
+    </div>
+
+    <div class="field">
+      <label>PROJECT TYPE</label>
+      <select name="type" required>
+        <option value="">Select project</option>
+        <option>Illustration</option>
+        <option>Tattoo Design</option>
+        <option>Character Design</option>
+        <option>Tarot / Card Art</option>
+        <option>Commercial Project</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>BUDGET (THB)</label>
+      <input type="text" name="budget"
+             placeholder="Your budget">
+    </div>
+
+    <div class="field full">
+      <label>DEADLINE</label>
+      <input type="text" name="deadline"
+             placeholder="Desired completion date">
+    </div>
+
+    <div class="field full">
+      <label>PROJECT DETAILS</label>
+      <textarea name="details"
+        placeholder="Tell me about your idea, references and requirements..."
+        required></textarea>
+    </div>
+
+    <button class="btn primary" type="submit">
+      PREPARE COMMISSION REQUEST ↗
+    </button>
+
+  </form>
+</section>
+
+<!-- FACEBOOK AND PHONE -->
+
+<section class="social-contact" id="contact-details">
+  <div class="eyebrow">LET'S CONNECT</div>
+
+  <h2>
+    Find me <em>here.</em>
+  </h2>
+
+  <div class="contact-buttons">
+
+    <a class="btn primary"
+       href="https://www.facebook.com/search/top?q=Weeraya%20Inthanong"
+       target="_blank" rel="noopener">
+      FACEBOOK · WEERAYA INTHANONG ↗
+    </a>
+    
+    <a class="btn primary"
+       href="https://www.instagram.com/cheeseburger.withoutcheese?fbclid=IwY2xjawUjZUdleHRuA2FlbQIxMABwZG9mBWJyaWQRMW5LYm5nbmtFSktTa2pLY0ZzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe5C72Tta8M0ukletMVVYrk6mNOo2Ptdc85SeoONvHN1aBluMFghgv_1-Y9WE_aem_OHqJB5OrXUN_UI3dWewxog"
+       target="_blank" rel="noopener">
+      INSTARGRAM . Cheeseburger.withoutcheese ↗️
+    </a>
+
+    <a class="btn" href="tel:0822909792">
+      CALL · 082-290-9792
+    </a>
+
+    <a class="btn"
+       href="https://www.facebook.com/search/top?q=Weeraya%20Inthanong"
+       target="_blank" rel="noopener">
+      MESSAGE ME ↗
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div>
+    <strong>WEYA.exe</strong>
+    <br>
+    Independent Artist · Art & Creative Studio
+    <br>
+    Facebook: Weeraya Inthanong
+    <br>
+    Instargram: Cheeseburger.withoutcheese
+    <br>
+    Tel: 082-290-9792
+    <br>
+  </div>
+
+  <div>
+    © 2026 WEYA STUDIO. All rights reserved.
+  </div>
+</footer>
+
+<script>
+
+// GALLERY FILTER
+
+document.querySelectorAll('.filter').forEach(button => {
+  button.addEventListener('click', () => {
+
+    document.querySelectorAll('.filter')
+      .forEach(b => b.classList.remove('active'));
+
+    button.classList.add('active');
+
+    const filter = button.dataset.filter;
+
+    document.querySelectorAll('.art-card').forEach(card => {
+      card.style.display =
+        filter === 'all' ||
+        card.dataset.category === filter
+        ? ''
+        : 'none';
+    });
+  });
+});
+
+// SCROLL ANIMATION
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: .12 });
+
+document.querySelectorAll('.reveal')
+  .forEach(el => observer.observe(el));
+
+// COMMISSION FORM
+
+document.getElementById('commissionForm')
+  .addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const data = new FormData(this);
+
+    const name = data.get('name');
+    const contact = data.get('contact');
+    const type = data.get('type');
+    const budget = data.get('budget');
+    const deadline = data.get('deadline');
+    const details = data.get('details');
+
+    const subject = encodeURIComponent(
+      'Commission Request - ' + type
+    );
+
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Contact: ' + contact + '\n' +
+      'Project: ' + type + '\n' +
+      'Budget: ' + budget + ' THB\n' +
+      'Deadline: ' + deadline + '\n\n' +
+      'Project Details:\n' + details
+    );
+
+    window.location.href =
+      'mailto:ponyomest@gmail.com?subject='
+      + subject + '&body=' + body;
+
+  });
+
+</script>
+
+</body>
+</html>
